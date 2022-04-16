@@ -1,0 +1,31 @@
+<div class="main index">
+  <div class="container">
+    <h1 class="index-heading">タスク一覧</h1>
+    <% @tasks.each do |task| %>
+      <div class="task-index-item">
+        <% if task.clear == 1 %>
+          <div class="task-content">
+            <%= task.content %>
+          </div>
+        <% else %>
+          <div class="task-content unclear">
+            <%= task.content %>
+          </div>
+        <% end %>
+        <div class="task-menus">
+          <ul>
+            <li>
+              <%= task.deadline%>
+            </li>
+            <li>
+              <%= link_to("削除","/tasks/#{task.id}/destroy",{method: "post"}) %>
+            </li>
+            <li>
+              <%= link_to("再設定","/tasks/#{task.id}/set_again",{method: "post"})%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

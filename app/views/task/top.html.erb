@@ -1,0 +1,22 @@
+<div class="main top">
+  <div class="container">
+    <h1 class="top-heading">未達成かつ今日以降のタスク一覧</h1>
+    <% @tasks.each do |task| %>
+      <div class="task-index-item">
+        <div class="task-content">
+          <%= task.content%>
+        </div>
+        <div class="task-menus">
+          <ul>
+            <li>
+              <%= task.deadline%>
+            </li>
+            <li class="clear btn">
+              <%= link_to("clear!","/tasks/#{task.id}/clear",{method: "post"}) %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
